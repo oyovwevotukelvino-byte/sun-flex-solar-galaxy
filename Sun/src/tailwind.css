@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --space-black:#050816;
+  --solar-gold:#FDB813;
+  --electric-blue:#2B6CFF;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  background: radial-gradient(1200px 700px at 15% 10%, rgba(43,108,255,0.25), transparent 55%),
+              radial-gradient(900px 600px at 85% 25%, rgba(253,184,19,0.18), transparent 50%),
+              linear-gradient(180deg, #050816, #030512);
+  color: rgba(255,255,255,0.88);
+}
+
