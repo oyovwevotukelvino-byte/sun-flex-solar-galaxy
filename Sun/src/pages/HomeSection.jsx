@@ -5,7 +5,11 @@ import { estimateSolarSavings } from '../lib/calculators.js'
 import { formatCurrencyNGN } from '../lib/format.js'
 import { productData } from '../data/site.js'
 import { ArrowRight, Zap, ShieldCheck, Star } from 'lucide-react'
-
+import heroImg from '../assets/soren-h-omfN1pW-n2Y-unsplash.jpg'
+import solarHomeImg from '../assets/charlie-garcia-oSR2jZoFwcA-unsplash.jpg'
+import solarInverterImg from '../assets/newpowa-CRCAQea1Z3o-unsplash.jpg'
+import solarStreetLightsImg from '../assets/ricardo-gomez-angel-MagdWoazARo-unsplash(2).jpg'
+import commercialSolarImg from '../assets/newpowa-b274xE-6itw-unsplash.jpg'
 import { useEffect, useRef } from 'react'
 
 function AnimatedCounter({ value, suffix = '', duration = 1.2 }) {
@@ -40,6 +44,7 @@ useEffect(() => {
     </div>
   )
 }
+
 
 
 function SolarSavingsPreview() {
@@ -143,6 +148,13 @@ function SolarSavingsPreview() {
 }
 
 export default function HomeSection() {
+  const highlightProducts = [
+    { key: 'home-highlight', title: 'Solar Home Systems', watt: '3kW – 10kW', imageSrc: solarHomeImg },
+    { key: 'inverter-highlight', title: 'Solar Inverters', watt: '3kW – 8kW', imageSrc: solarInverterImg },
+    { key: 'street-highlight', title: 'Solar Street Lights', watt: '50W – 200W', imageSrc: solarStreetLightsImg },
+    { key: 'commercial-highlight', title: 'Commercial Solar Systems', watt: '10kW – 100kW', imageSrc: commercialSolarImg },
+  ]
+
   const highlights = [
     { icon: Zap, title: 'Premium tech', desc: 'High-efficiency modules + smart monitoring.' },
     {
@@ -246,38 +258,43 @@ export default function HomeSection() {
                     </div>
                   </div>
 
-                  <div className="mt-6 relative h-[280px]">
-                    <motion.div
-                      className="absolute left-6 top-10 w-[230px] h-[140px] rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/0 backdrop-blur-xl shadow-[0_0_60px_rgba(43,108,255,0.15)]"
-                      animate={{ y: [0, -14, 0] }}
-                      transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-                    >
-                      <div className="p-4">
-                        <div className="h-2 w-full bg-white/10 rounded-full" />
-                        <div className="mt-5 grid grid-cols-2 gap-3">
-                          {[0, 1, 2, 3].map((i) => (
-                            <div
-                              key={i}
-                              className="h-20 rounded-2xl bg-gradient-to-br from-solar-gold/20 to-electric-500/10 border border-white/10 flex items-end p-3"
-                            >
-                              <div className="h-1.5 w-full bg-white/10 rounded-full" />
-                            </div>
-                          ))}
+                  <div className="mt-6 relative overflow-hidden rounded-3xl bg-black/10">
+                    <img
+                      src={heroImg}
+                      alt="Solar installation overview"
+                      className="h-[280px] w-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                    <div className="absolute inset-x-5 bottom-5 grid gap-4 md:grid-cols-2">
+                      <div className="rounded-3xl border border-white/10 bg-black/50 p-3 backdrop-blur-xl">
+                        <div className="text-white/70 text-xs uppercase tracking-[0.3em]">
+                          Solar system showcase
+                        </div>
+                        <div className="mt-3 text-white text-2xl font-semibold">
+                          Premium installation in Delta State
+                        </div>
+                        <div className="mt-2 text-white/70 text-sm">
+                          Real world residential system with smart monitoring, battery-ready storage, and sleek panel integration.
                         </div>
                       </div>
-                    </motion.div>
-
-                    <motion.div
-                      className="absolute right-4 top-24 w-[190px] h-[120px] rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 to-white/0 backdrop-blur-xl"
-                      animate={{ y: [0, -10, 0], rotate: [0, 1.5, 0] }}
-                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
-                    />
-
-                    <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute left-[22%] top-[18%] h-2 w-2 rounded-full bg-white/60" />
-                      <div className="absolute left-[65%] top-[26%] h-2 w-2 rounded-full bg-white/40" />
-                      <div className="absolute left-[40%] top-[58%] h-1.5 w-1.5 rounded-full bg-white/30" />
-                      <div className="absolute left-[70%] top-[65%] h-1 w-1 rounded-full bg-white/25" />
+                      <div className="grid gap-3">
+                        {productData.slice(0, 2).map((product) => (
+                          <div
+                            key={product.key}
+                            className="rounded-3xl overflow-hidden border border-white/10 bg-white/10 backdrop-blur-xl"
+                          >
+                            <img
+                              src={product.imageSrc}
+                              alt={product.title}
+                              className="h-20 w-full object-cover"
+                            />
+                            <div className="p-3">
+                              <div className="text-white font-semibold text-sm">{product.title}</div>
+                              <div className="text-white/60 text-xs mt-1">{product.watt}</div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -321,14 +338,16 @@ export default function HomeSection() {
               Popular Solar Solutions
             </div>
             <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {productData.slice(0, 4).map((p) => (
-                <div key={p.key} className="rounded-2xl border border-white/10 bg-white/5 p-4">
-                  <div className="text-white/80 font-semibold">{p.title}</div>
-                  <div className="mt-2 text-white/60 text-sm">{p.watt}</div>
-                  <div className="mt-3 h-px bg-white/10" />
-                  <div className="mt-3 flex items-center justify-between">
-                    <div className="text-electric-500/90 font-semibold">{p.price}</div>
-                    <button className="text-solar-gold text-sm hover:underline">Learn more</button>
+              {highlightProducts.map((p) => (
+                <div key={p.key} className="rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                  <img src={p.imageSrc} alt={p.title} className="h-36 w-full object-cover" />
+                  <div className="p-4">
+                    <div className="text-white/80 font-semibold">{p.title}</div>
+                    <div className="mt-2 text-white/60 text-sm">{p.watt}</div>
+                    <div className="mt-3 h-px bg-white/10" />
+                    <div className="mt-3">
+                      <button className="text-solar-gold text-sm hover:underline">Learn more</button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -414,6 +433,7 @@ export default function HomeSection() {
               quote:
                 'Professional service, premium products, and a team that communicates clearly. We feel confident with Sun Flex Solar Galaxy.',
             },
+            
           ].map((t) => (
             <div key={t.name} className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
               <div className="flex items-center justify-between gap-4">

@@ -1,36 +1,26 @@
-import HomeSection from './pages/HomeSection'
-import AboutSection from './pages/AboutSection'
-import ProductsSection from './pages/ProductsSection'
-import ContactSection from './pages/ContactSection'
-import DashboardSection  from './pages/DashboardSection' 
-import TestimonialsSection from './pages/TestimonialsSection'
-import FinancingSection from './pages/FinancingSection'
-import Navbar from './sections/Navbar'
-import Footer from './sections/Footer'
 import SiteShell from './layouts/SiteShell.jsx'
 import FloatingContactButton from './sections/FloatingContactButton.jsx'
 
-
-
-
+import HomeSection from './pages/HomeSection.jsx'
+import AboutSection from './pages/AboutSection.jsx'
+import ProductsSection from './pages/ProductsSection.jsx'
+import FinancingSection from './pages/FinancingSection.jsx'
+import DashboardSection from './pages/DashboardSection.jsx'
+import TestimonialsSection from './pages/TestimonialsSection.jsx'
+import ContactSection from './pages/ContactSection.jsx'
 
 export default function App() {
   return (
-    <>
+    <SiteShell>
       <HomeSection />
-      <AboutSection/>
+      <AboutSection />
       <ProductsSection />
+      <FinancingSection />
+      <DashboardSection />
+      <TestimonialsSection />
       <ContactSection />
-      <DashboardSection/>
-      <TestimonialsSection/>
-      <FinancingSection/>
-      <Navbar/>
-      <Footer/>
-      <SiteShell />
       <FloatingContactButton />
-
-      
-    </>
+    </SiteShell>
   )
 }
 

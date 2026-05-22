@@ -121,14 +121,32 @@ export default function ContactSection() {
               WhatsApp CTA
             </a>
           </div>
-
+           
           <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6">
             <div className="flex items-center gap-2 text-white/70 text-sm font-semibold tracking-wide">
               <MapPin size={16} className="text-solar-gold" />
               Interactive map
             </div>
-            <div className="mt-3 h-44 rounded-2xl border border-white/10 bg-black/10 flex items-center justify-center text-white/50 text-sm">
-              Map embed placeholder
+            
+            <div className="mt-3 h-44 rounded-2xl overflow-hidden border border-white/10">
+               <iframe
+                title="Sun Flex Solar Galaxy Location"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3971.4861569867853!2d5.9921685!3d5.4945782!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1041bd3712293ab5%3A0x260f1b4422c4dd27!2s7%20Oharisi%20St%2C%20Ughelli%20333105%2C%20Delta!5e0!3m2!1sen!2sng!4v1779428263173!5m2!1sen!2sng"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+           </div>
+          </div>
+           <div className="mt-4 flex items-start gap-3 text-white/70">
+             <MapPin size={18} className="text-solar-gold mt-1" />
+
+            <div className="text-sm leading-relaxed">
+               Sun Flex Solar Galaxy <br />
+              No 7, Oharisi Street opposite Bestway Supermarket, Ughelli Delta State, Nigeria
             </div>
           </div>
 

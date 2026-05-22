@@ -12,79 +12,110 @@ function ProductCard({ p, index }) {
       transition={{ duration: 0.6, ease: 'easeOut', delay: index * 0.03 }}
       className="group relative"
     >
-      <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-5 md:p-6 overflow-hidden relative">
-        {/* ambient neon */}
-        <div className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <div className="absolute -top-20 left-[-20%] h-56 w-56 rounded-full bg-electric-500/20 blur-3xl" />
-          <div className="absolute top-10 right-[-25%] h-56 w-56 rounded-full bg-solar-gold/15 blur-3xl" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(43,108,255,0.26),transparent_45%),radial-gradient(circle_at_70%_35%,rgba(253,184,19,0.22),transparent_45%)]" />
+      <div className="relative z-0 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-4 sm:p-5 md:p-6 overflow-hidden">
+        {/* Decorative backdrop (must stay behind content) */}
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="absolute -top-24 -left-20 h-56 w-56 rounded-full bg-electric-500/15 blur-3xl" />
+          <div className="absolute -bottom-28 -right-24 h-64 w-64 rounded-full bg-solar-gold/10 blur-3xl" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,rgba(43,108,255,0.22),transparent_46%),radial-gradient(circle_at_70%_35%,rgba(253,184,19,0.18),transparent_46%)]" />
         </div>
 
-        {/* hover border glow */}
-        <div className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity">
-          <div className="absolute inset-0 rounded-3xl border border-electric-500/25" />
-          <div className="absolute inset-0 rounded-3xl shadow-[0_0_60px_rgba(43,108,255,0.18)]" />
+        {/* Hover border glow */}
+        <div className="pointer-events-none absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute inset-0 rounded-3xl border border-electric-500/20" />
+          <div className="absolute inset-0 rounded-3xl shadow-[0_0_70px_rgba(43,108,255,0.16)]" />
         </div>
 
-        <div className="relative">
-          <div className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              <div className="text-white/70 text-xs md:text-sm font-semibold tracking-wide">
-                {p.watt}
+        {/* Content (must be above decorations) */}
+        <div className="relative z-10">
+          {/* Image hero */}
+          <div className="relative">
+            <div className="absolute -inset-2 rounded-3xl bg-[radial-gradient(circle_at_30%_25%,rgba(43,108,255,0.20),transparent_50%),radial-gradient(circle_at_70%_35%,rgba(253,184,19,0.16),transparent_55%)] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+            <div className="relative rounded-3xl border border-white/10 bg-black/15 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-electric-500/10 via-transparent to-solar-gold/10" />
+
+              <div className="pointer-events-none absolute top-8 left-8 h-20 w-20 rounded-full bg-electric-500/10 blur-3xl" />
+              <div className="pointer-events-none absolute bottom-8 right-8 h-20 w-20 rounded-full bg-solar-gold/10 blur-3xl" />
+
+              <motion.div
+                className="relative z-10 h-[260px] sm:h-[280px] md:h-[300px] flex items-center justify-center"
+                whileHover={{ scale: 1.04, rotate: -1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <img
+                  src={p.imageSrc}
+                  alt={p.title}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-h-[260px] max-w-[86%] object-contain drop-shadow-[0_0_45px_rgba(253,184,19,0.25)]"
+                />
+              </motion.div>
+
+              {/* subtle cinematic frame */}
+              <div className="pointer-events-none absolute inset-0 z-10 rounded-3xl border border-white/0 group-hover:border-white/10 transition-colors" />
+            </div>
+          </div>
+
+          {/* Info hierarchy */}
+          <div className="mt-4">
+            <div className="flex items-start justify-between gap-3">
+              <div className="min-w-0">
+                <h3 className="text-white text-lg sm:text-xl md:text-2xl font-semibold leading-tight">
+                  {p.title}
+                </h3>
               </div>
-              <div className="mt-2 text-white text-lg md:text-2xl font-semibold leading-tight">
-                {p.title}
+              <div className="shrink-0 rounded-2xl border border-electric-500/25 bg-electric-500/10 px-3 py-2">
+                <div className="text-electric-500/90 text-[11px] font-semibold tracking-wide">
+                  Capacity
+                </div>
+                <div className="mt-0.5 text-white font-semibold text-sm">{p.watt}</div>
               </div>
             </div>
-            <div className="h-11 w-11 md:h-12 md:w-12 rounded-2xl border border-white/10 bg-electric-500/15 flex items-center justify-center">
-              <div className="h-2.5 w-2.5 rounded-full bg-solar-gold shadow-[0_0_22px_rgba(253,184,19,0.65)]" />
+
+            <p className="mt-3 text-white/70 text-sm leading-relaxed">
+              {p.description}
+            </p>
+
+            {/* Feature tags */}
+            <div className="mt-4 flex flex-wrap gap-2">
+              {p.features.slice(0, 4).map((f) => (
+                <span
+                  key={f}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/70 hover:bg-white/10 transition"
+                >
+                  <span className="h-1.5 w-1.5 rounded-full bg-electric-500 shadow-[0_0_18px_rgba(43,108,255,0.45)]" />
+                  {f}
+                </span>
+              ))}
             </div>
-          </div>
 
-          {/* image */}
-          <div className="mt-4 overflow-hidden rounded-2xl border border-white/10 bg-black/10">
-            <motion.img
-              src={p.imageSrc}
-              alt={p.title}
-              loading="lazy"
-              decoding="async"
-              className="h-44 md:h-48 w-full object-cover"
-              initial={{ scale: 1 }}
-              whileHover={{ scale: 1.04 }}
-              transition={{ duration: 0.45, ease: 'easeOut' }}
-            />
-          </div>
-
-          {/* description */}
-          <div className="mt-4 text-white/70 text-sm leading-relaxed">
-            {p.description}
-          </div>
-
-          {/* features */}
-          <div className="mt-4 grid grid-cols-2 gap-2">
-            {p.features.slice(0, 4).map((f) => (
-              <div key={f} className="flex items-center gap-2 text-white/65 text-xs">
-                <span className="h-1.5 w-1.5 rounded-full bg-electric-500" />
-                <span className="truncate">{f}</span>
+            {/* Price line (less dominant than CTA) */}
+            <div className="mt-4 flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-black/15 px-4 py-3">
+              <div>
+                <div className="text-white/55 text-[11px] font-semibold tracking-wide">
+                  Starting from
+                </div>
+                <div className="mt-0.5 text-white font-semibold">{p.price}</div>
               </div>
-            ))}
-          </div>
+              <div className="hidden sm:block h-10 w-10 rounded-2xl border border-white/10 bg-electric-500/10" />
+            </div>
 
-          <div className="mt-5 rounded-2xl border border-white/10 bg-black/10 p-4">
-            <div className="text-white/60 text-[11px] font-semibold tracking-wide">Capacity pricing</div>
-            <div className="mt-1 text-white font-semibold">{p.price}</div>
+            {/* CTA */}
+            <motion.button
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.99 }}
+              className="mt-5 w-full rounded-2xl bg-solar-gold text-space-100 font-semibold px-5 py-3 hover:brightness-110 transition shadow-[0_0_30px_rgba(253,184,19,0.22)] flex items-center justify-center gap-2 group"
+              onClick={() =>
+                document.getElementById('contact')?.scrollIntoView({
+                  behavior: 'smooth',
+                })
+              }
+            >
+              {p.ctaLabel}
+              <ArrowRight size={18} className="transition group-hover:translate-x-0.5" />
+            </motion.button>
           </div>
-
-          {/* CTA */}
-          <motion.button
-            whileHover={{ y: -1 }}
-            whileTap={{ scale: 0.99 }}
-            className="mt-5 w-full rounded-2xl bg-white/5 border border-white/15 text-white font-semibold px-5 py-3 hover:bg-white/10 transition flex items-center justify-center gap-2 group"
-            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            {p.ctaLabel}
-            <ArrowRight size={18} className="text-solar-gold group-hover:translate-x-0.5 transition" />
-          </motion.button>
         </div>
       </div>
     </motion.div>
