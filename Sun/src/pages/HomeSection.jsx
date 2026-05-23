@@ -134,13 +134,17 @@ function SolarSavingsPreview() {
               {result.solarKwh.toFixed(0)} kWh
             </span>
           </div>
-          <button className="group inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-4 py-2 text-white hover:bg-white/10 transition">
-            Get financing estimate
-            <ArrowRight
-              className="text-solar-gold group-hover:translate-x-0.5 transition"
-              size={16}
-            />
-          </button>
+          <a
+           href="#financing"
+           className="group inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-4 py-2 text-white hover:bg-white/10 transition"
+          >
+         Get financing estimate
+
+         <ArrowRight
+         className="text-solar-gold group-hover:translate-x-0.5 transition"
+         size={16}
+         />
+         </a>
         </div>
       </div>
     </div>
@@ -361,7 +365,7 @@ export default function HomeSection() {
               Powering communities across Africa
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
-              {['Lagos', 'Accra', 'Nairobi', 'Kano', 'Abuja', 'Enugu'].map((c) => (
+              {[ 'Delta','Lagos', 'Accra', 'Nairobi', 'Kano', 'Abuja', 'Enugu', ].map((c) => (
                 <span
                   key={c}
                   className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-white/70"

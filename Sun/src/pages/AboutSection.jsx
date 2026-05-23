@@ -38,7 +38,7 @@ const pillars = [
 ]
 
 const team = [
-  { name: 'Amara Osei',      role: 'CEO & Founder',       loc: 'Accra, Ghana',    initials: 'AO', g: 'from-solar-gold/30 to-orange-500/20'   },
+  { name: 'Abamram Ovie',      role: 'CEO & Founder',       loc: 'Delta, Nigeria',    initials: 'AO', g: 'from-solar-gold/30 to-orange-500/20'   },
   { name: 'Fatima Al-Hassan', role: 'CTO',                 loc: 'Lagos, Nigeria',  initials: 'FA', g: 'from-electric-500/30 to-cyan-500/20'   },
   { name: 'Kwame Mensah',    role: 'Head of Engineering',  loc: 'Nairobi, Kenya',  initials: 'KM', g: 'from-purple-500/30 to-indigo-500/20'   },
 ]
