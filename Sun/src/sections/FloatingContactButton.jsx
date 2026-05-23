@@ -3,7 +3,7 @@ import { MessageCircle } from 'lucide-react'
 export default function FloatingContactButton() {
   return (
     <a
-      href="https://wa.me/2348000000000?text=Hello%20Sun%20Flex%20Solar%20Galaxy%2C%20I%20need%20help%20choosing%20a%20solar%20system."
+      href="https://wa.me/2347068218951?text=Hello%20Sun%20Flex%20Solar%20Galaxy%2C%20I%20need%20help%20choosing%20a%20solar%20system."
       target="_blank"
       rel="noreferrer"
       className="fixed right-4 bottom-4 z-[60]"
